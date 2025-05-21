@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -8,13 +9,13 @@ function Navbar() {
     >
       <div className="container px-5 d-flex justify-content-between">
         <div>
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             <img
               src="images/logo.svg"
               alt="logo"
               style={{ width: "23%" }}
             ></img>
-          </a>
+          </Link>
         </div>
         <div>
           <button
@@ -32,29 +33,29 @@ function Navbar() {
             <form className="d-flex " role="search">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0 hstack gap-4">
                 <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
+                  <Link className="nav-link" to="/signup">
                     Signup
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/about">
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
+                  <Link className="nav-link" to="/product">
                     Product
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/pricing">
                     Pricing
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
+                  <Link className="nav-link" to="/support">
                     Suppport
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </form>
