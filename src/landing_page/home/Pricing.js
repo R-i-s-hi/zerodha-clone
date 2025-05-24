@@ -2,16 +2,16 @@ import React from 'react';
 
 function Pricing() {
     return ( 
-        <div className='container'>
+        <div className='container' style={{color: "#424242", marginTop: "100px"}}>
             <div className='row mt-5 mb-5 px-5'>
                 <div className='col-4'>
                     <h1 className='mb-4'>
                         Unbeatable pricing
                     </h1>
-                    <p>
+                    <p className='fw-medium text-muted'>
                         We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.
                     </p>
-                    <a href='' style={{textDecoration: "none"}}>See pricing &nbsp;<i class="fa-solid fa-right-long"></i></a>
+                    <a className='fw-medium' href='' style={{textDecoration: "none"}}>See pricing &nbsp;<i class="fa-solid fa-right-long"></i></a>
                 </div>
                 <div className='col-2'>
 

@@ -6,10 +6,10 @@ function Footer() {
       <div className="d-flex justify-content-between mt-5 pt-3">
         <div style={{ width: "30%" }}>
           <img src="images/logo.svg" alt="logo" style={{ width: "45%" }}></img>
-          <p className="mt-4">
-            © 2010 - 2025, Zerodha Broking Ltd. All rights reserved.
+          <p className="mt-4 text-muted" style={{fontSize: "14px", fontWeight: "600"}}>
+            © 2010 - 2025, Zerodha Broking Ltd. <br></br> All rights reserved.
           </p>
-          <div className="d-flex hstack gap-4 mt-3">
+          <div className="d-flex hstack gap-4 fs-5 text-muted mt-4">
             <a href="" className="nav-link">
               <i class="fa-brands fa-x-twitter"></i>
             </a>
@@ -24,7 +24,7 @@ function Footer() {
             </a>
           </div>
           <hr />
-          <div className="d-flex hstack gap-4">
+          <div className="d-flex hstack fs-5 text-muted gap-4">
             <a href="" className="nav-link">
               <i class="fa-brands fa-youtube"></i>
             </a>
@@ -38,7 +38,7 @@ function Footer() {
         </div>
         <div>
           <h4 className="mb-4">Company</h4>
-          <ul className="p-0 vstack gap-2" style={{ listStyleType: "none" }}>
+          <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none" }}>
             <li>
               <a href="" className="nav-link">
                 About
@@ -88,7 +88,7 @@ function Footer() {
         </div>
         <div>
           <h4 className="mb-4">Support</h4>
-          <ul className="p-0 vstack gap-2" style={{ listStyleType: "none" }}>
+          <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none" }}>
             <li>
               <a href="" className="nav-link">
                 Contact us
@@ -138,7 +138,7 @@ function Footer() {
         </div>
         <div>
           <h4 className="mb-4">Account</h4>
-          <ul className="p-0 vstack gap-2" style={{ listStyleType: "none" }}>
+          <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none" }}>
             <li>
               <a href="" className="nav-link">
                 Open an account
