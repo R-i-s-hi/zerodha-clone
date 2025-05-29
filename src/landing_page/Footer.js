@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="container mt-5 px-5 border-top">
+    <div className="container mt-5 px-5 border-top" style={{backgroundColor: " #fbfbfb"}}>
       <div className="d-flex justify-content-between mt-5 pt-3">
         <div style={{ width: "30%" }}>
           <img src="images/logo.svg" alt="logo" style={{ width: "45%" }}></img>
