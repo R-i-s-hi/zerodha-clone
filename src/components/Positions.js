@@ -3,7 +3,7 @@ import { positions } from "../data/data";
 const Positions = () => {
   return (
     <>
-      <h3 className="title">{positions.length}</h3>
+      <h3 className="title">Positions ({positions.length})</h3>
 
       <div className="order-table">
         <table>
@@ -11,9 +11,9 @@ const Positions = () => {
             <th>Product</th>
             <th>Instrument</th>
             <th>Qty.</th>
-            <th>Avg.</th>
-            <th>LTP</th>
-            <th>P&L</th>
+            <th>Avg.(₹)</th>
+            <th>LTP(₹)</th>
+            <th>P&L(₹)</th>
             <th>Chg.</th>
           </tr>
 

@@ -37,9 +37,10 @@ code {
 }
 
 .funds p {
+  text-align: center;
   font-size: 0.8rem;
   color: rgb(179, 179, 179);
-  margin-right: 8px;
+  margin-right: 2rem;
 }
 
 .btn {
@@ -98,6 +99,7 @@ code {
 }
 
 .table .data {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -847,6 +849,4 @@ hr {
 .action:hover {
   background-color: rgb(212, 212, 212);
 }
-
-
 
