@@ -9,12 +9,40 @@ const {HoldingsModel} = require("./models/HoldingsModel");
 const {PositionsModel} = require("./models/PositionsModel");
 const {OrdersModel} = require("./models/OrdersModel");
 
-const PORT = process.env.PORT || 3002;
+const cookieParser = require("cookie-parser");
+const authRoute = require("./routes/AuthRoute");
+const { userVerification } = require("./middlewares/AuthMiddleware");
+
+const PORT = 5000;
 const URL = process.env.MONGO_URL;
 const app = express();
 
-app.use(cors());
+
+mongoose
+  .connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.error(err));
+
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(express.json());
+
+app.use("/api", (req, res, next) => {
+  console.log("API Route Hit:", req.method, req.url);
+  next();
+});
+
+app.use(cors({
+  origin: ["http://localhost:3000", "http://localhost:3001"],
+  methods: ["GET", "POST"],
+  credentials: true,
+})
+);
+
+
 
 
 
@@ -187,8 +215,18 @@ app.use(bodyParser.json());
 
 });**/
 
+app.use("/api", authRoute);
 
+app.post("/api/verify-user", userVerification); 
 
+app.post("/api/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: false, 
+    sameSite: "None"
+  });
+  res.json({ success: true, message: "Logged out successfully" });
+});
 
 app.get("/allholdings", async(req, res) => {
     let allHoldings = await HoldingsModel.find({});
@@ -230,8 +268,6 @@ app.get("/getStock/:uid", async(req, res) => {
   res.json(stock);
 });
 
-app.listen(PORT, () => {
-  console.log("App Started!");
-  mongoose.connect(URL);
-  console.log("DB Connected!");
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`App Started on PORT ${PORT}`);
 });
