@@ -26,21 +26,16 @@ mongoose
   .then(() => console.log("DB connected"))
   .catch((err) => console.error(err));
 
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.json());
+app.use(cors({ origin: ["http://localhost:3000", "http://localhost:3001"], methods: ["GET", "POST"], credentials: true }));
 
 app.use("/api", (req, res, next) => {
   console.log("API Route Hit:", req.method, req.url);
   next();
 });
 
-app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001"],
-  methods: ["GET", "POST"],
-  credentials: true,
-})
-);
 
 
 
@@ -218,15 +213,6 @@ app.use(cors({
 app.use("/api", authRoute);
 
 app.post("/api/verify-user", userVerification); 
-
-app.post("/api/logout", (req, res) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: false, 
-    sameSite: "None"
-  });
-  res.json({ success: true, message: "Logged out successfully" });
-});
 
 app.get("/allholdings", async(req, res) => {
     let allHoldings = await HoldingsModel.find({});
