@@ -4,11 +4,11 @@ const jwt = require("jsonwebtoken");
 
 module.exports.userVerification = async (req, res) => {
   const authHeader = req.headers.authorization;
-  const token = authHeader && authHeader.split(" ")[1]; // Bearer <token>
-
-  if (!token) {
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ status: false, message: "No token provided" });
   }
+  if (!authHeader) return res.json({ status: false });
+  const token = authHeader.split(" ")[1]; // Bearer <token>
 
   try {
     const decoded = jwt.verify(token, process.env.TOKEN_KEY);
