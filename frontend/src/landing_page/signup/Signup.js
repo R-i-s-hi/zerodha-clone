@@ -37,30 +37,33 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:5000/api/signup", {email, username, password}, { withCredentials: true });
-      const { success, message } = data;
-
-      setEmail("");
-      setUsername("");
-      setPassword("");
 
       if (!email || !password || !username) {
         handleError("All fields are required");
         return;
       }
 
-      if (success) {
+      const { data } = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/signup", {email, username, password});
+      const { success, message, token } = data;
+
+      if (success && token) {
+        localStorage.setItem("token", token);
+
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "http://localhost:3001";
+          window.location.href = data.redirectTo;
         }, 1000);
       } else {
-        handleError(message);
+        handleError(message || "Signup failed");
       }
 
     } catch (error) {
       console.log("Signup Error:", error);
       handleError(error.response?.data?.message || "Signup failed. Please try again.");
+    } finally {
+      setEmail("");
+      setUsername("");
+      setPassword("");
     }
   };
 

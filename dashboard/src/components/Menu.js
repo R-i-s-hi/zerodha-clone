@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -19,19 +19,10 @@ const Menu = () => {
     setIsProfileDropdown(!isProfileDropdown);
   }
 
-  const navigate = useNavigate(); 
   const handleLogout = async () => {
-      try {
-        await axios.post("http://localhost:5000/api/logout", {}, { withCredentials: true });
-        removeCookie("token");
-        toast.success("Logged out successfully!", { position: "bottom-left" });
-        setTimeout(() => {
-          window.location.href="http://localhost:3000/login"
-        }, 1000); // Redirect to login
-      } catch (error) {
-        console.error("Logout failed:", error);
-      }
-    };
+      localStorage.removeItem("token"); // Clear JWT
+      window.location.href = "https://zerodha-clone-landing-page.onrender.com/login"; // Redirect to login
+  };
 
   const menuClass = "menu";
   const menuSelectedClass = "menu selected";

@@ -9,7 +9,6 @@ const {HoldingsModel} = require("./models/HoldingsModel");
 const {PositionsModel} = require("./models/PositionsModel");
 const {OrdersModel} = require("./models/OrdersModel");
 
-const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/AuthRoute");
 const { userVerification } = require("./middlewares/AuthMiddleware");
 
@@ -28,8 +27,7 @@ mongoose
 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(cors({ origin: ["http://localhost:3000", "http://localhost:3001"], methods: ["GET", "POST"], credentials: true }));
+app.use(cors({ origin: ["https://zerodha-clone-landing-page.onrender.com", "https://zerodha-clone-dashboard-2zpz.onrender.com"], methods: ["GET", "POST"], credentials: true }));
 
 app.use("/api", (req, res, next) => {
   console.log("API Route Hit:", req.method, req.url);

@@ -33,9 +33,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {                                                                //pass email and password to backend
-      const {data} = await axios.post("http://localhost:5000/api/login", {email, password} , { withCredentials: true });
+      const {data} = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/login", {email, password});
           
       if (data.success) {
+        localStorage.setItem("token", data.token);
+
         handleSuccess(data.message);
         setTimeout(() => {
           window.location.href = data.redirectTo;

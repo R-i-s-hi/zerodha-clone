@@ -1,13 +1,11 @@
 import Dashboard from "./Dashboard";
 import TopBar from "./TopBar";
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [, removeCookie] = useCookies(["token"]);
   const [username, setUsername] = useState("");
   const [hasWelcomed, setHasWelcomed] = useState(false);
   const navigate = useNavigate();
@@ -15,34 +13,49 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
 
-      await axios.post(
-        "http://localhost:5000/api/verify-user",
-        {},
-        { withCredentials: true }
-      ).then(res => {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        navigate("https://zerodha-clone-landing-page.onrender.com/login");
+        return;
+      }
+
+      try {
+        const res = await axios.post(
+          "https://zerodha-clone-n5oh.onrender.com/api/verify-user",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         if (!res.data.status) {
-          console.log("No user found or token is invalid");
-          removeCookie("token");
-          navigate(res.data.redirectTo);
+          localStorage.removeItem("token");
+          navigate(res.data.redirectTo || "https://zerodha-clone-landing-page.onrender.com/login");
           return;
         }
+
         if (res.data.status && !hasWelcomed) {
-          toast.info(`Welcome to Dashboard!`, { position: "bottom-left", icon: false });
+          toast.info(`Welcome to Dashboard!`, {
+            position: "bottom-left",
+            icon: false,
+          });
           setHasWelcomed(true);
           setUsername(res.data.username);
-          console.log(res.data);
         }
-      }) .catch(err => {
-        console.error("Error verifying user:", err);
-        toast.error("Failed to verify user. Please log in again.", { position: "bottom-left" });
-        removeCookie("token");
-        navigate("http://localhost:3000/login");
-        return;
-      });
+
+      } catch (err) {
+        console.error("User verification failed:", err);
+        toast.error("User verification failed. Please log in again.", { position: "bottom-left" });
+        localStorage.removeItem("token");
+        navigate("https://zerodha-clone-landing-page.onrender.com/login");
+      }
     };
 
     verifyCookie();
-  }, [hasWelcomed, removeCookie]);
+  }, [hasWelcomed, navigate]);
   
 
   return (
