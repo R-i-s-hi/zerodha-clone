@@ -51,7 +51,7 @@ function Signup() {
 
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = data.redirectTo;
+          window.location.href = "https://zerodha-clone-landing-page.onrender.com"; // redirect to dashboard after successful signup
         }, 1000);
       } else {
         handleError(message || "Signup failed");

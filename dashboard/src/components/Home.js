@@ -3,12 +3,12 @@ import TopBar from "./TopBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [hasWelcomed, setHasWelcomed] = useState(false);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const verifyCookie = async () => {
@@ -16,7 +16,7 @@ const Home = () => {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        navigate("https://zerodha-clone-landing-page.onrender.com/login");
+        window.location.href="https://zerodha-clone-landing-page.onrender.com/login";
         return;
       }
 
@@ -33,10 +33,16 @@ const Home = () => {
 
         if (!res.data.status) {
           localStorage.removeItem("token");
-          navigate(res.data.redirectTo || "https://zerodha-clone-landing-page.onrender.com/login");
+
+          // fallback URL in case backend messes up again
+          const redirectUrl = res.data.redirectTo?.startsWith("http")
+            ? res.data.redirectTo
+            : "https://zerodha-clone-landing-page.onrender.com/login";
+
+          window.location.href = redirectUrl; // full redirect, avoids wrong path joining
           return;
         }
-
+        
         if (res.data.status && !hasWelcomed) {
           toast.info(`Welcome to Dashboard!`, {
             position: "bottom-left",
@@ -50,7 +56,7 @@ const Home = () => {
         console.error("User verification failed:", err);
         toast.error("User verification failed. Please log in again.", { position: "bottom-left" });
         localStorage.removeItem("token");
-        navigate("https://zerodha-clone-landing-page.onrender.com/login");
+        window.location.href="https://zerodha-clone-landing-page.onrender.com/login";
       }
     };
 

@@ -40,7 +40,7 @@ const Login = () => {
 
         handleSuccess(data.message);
         setTimeout(() => {
-          window.location.href = data.redirectTo;
+          window.location.href = "https://zerodha-clone-landing-page.onrender.com"; // redirect to dashboard after successful login
         }, 1000);
       } else {
         handleError(data.message || "Login failed");
