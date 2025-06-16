@@ -42,7 +42,7 @@ const Home = () => {
           window.location.href = redirectUrl; // full redirect, avoids wrong path joining
           return;
         }
-        
+
         if (res.data.status && !hasWelcomed) {
           toast.info(`Welcome to Dashboard!`, {
             position: "bottom-left",
@@ -61,7 +61,7 @@ const Home = () => {
     };
 
     verifyCookie();
-  }, [hasWelcomed, navigate]);
+  }, [hasWelcomed]);
   
 
   return (
