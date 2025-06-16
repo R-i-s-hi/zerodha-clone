@@ -1,7 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'
 import Hero from '../landing_page/home/Hero';
 
 // test suite for Hero component(can perform multiple test cases)
