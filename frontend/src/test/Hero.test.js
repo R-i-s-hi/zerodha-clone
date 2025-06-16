@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Hero from '../components/Hero';
+import Hero from './components/Hero';
 
 // test suite for Hero component(can perform multiple test cases)
 describe('Hero Component(Home)', () => {
