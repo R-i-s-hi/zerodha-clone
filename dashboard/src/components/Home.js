@@ -38,7 +38,6 @@ const Home = () => {
         console.error("User verification failed:", err);
         toast.error("User verification failed. Please log in again.", { position: "bottom-left" });
         localStorage.removeItem("token");
-        window.location.href="https://zerodha-clone-landing-page.onrender.com/login";
       }
     };
 
