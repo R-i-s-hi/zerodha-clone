@@ -1,17 +1,19 @@
 require("dotenv").config();
-
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const cors = require("cors");
-const cookieParser = require('cookie-parser');
-const {HoldingsModel} = require("./models/HoldingsModel");
-const {PositionsModel} = require("./models/PositionsModel");
-const {OrdersModel} = require("./models/OrdersModel");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const { HoldingsModel } = require("./models/HoldingsModel");
+const { PositionsModel } = require("./models/PositionsModel");
+const { OrdersModel } = require("./models/OrdersModel");
 const authRoute = require("./routes/AuthRoute");
+
 const PORT = 5000;
 const URL = process.env.MONGO_URL;
 const app = express();
+
+
 
 mongoose
   .connect(URL, {
@@ -33,32 +35,30 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-app.options('*', cors()); 
-
-app.use((req, res, next) => {
-  console.log(`[${req.method}] ${req.url}`);
-  next();
-});
+app.options('*', cors());
 
 app.use("/api", (req, res, next) => {
   console.log("API Route Hit:", req.method, req.url);
   next();
 });
 app.use("/api", authRoute);
-app.get("/allholdings", async(req, res) => {
-    let allHoldings = await HoldingsModel.find({});
-    res.json(allHoldings);
-})
-app.get("/allpositions", async(req, res) => {
-    let allPositions = await PositionsModel.find({});
-    res.json(allPositions);
-})
-app.get("/allorders", async(req, res) => {
+
+app.get("/allholdings", async (req, res) => {
+  let allHoldings = await HoldingsModel.find({});
+  res.json(allHoldings);
+});
+
+app.get("/allpositions", async (req, res) => {
+  let allPositions = await PositionsModel.find({});
+  res.json(allPositions);
+});
+
+app.get("/allorders", async (req, res) => {
   let allOrders = await OrdersModel.find({});
   res.json(allOrders);
-})
-app.post("/newOrder", async(req, res) => {
+});
+
+app.post("/newOrder", async (req, res) => {
   let newOrder = new OrdersModel({
     name: req.body.name,
     qty: req.body.qty,
@@ -66,8 +66,9 @@ app.post("/newOrder", async(req, res) => {
     mode: req.body.mode,
   });
   newOrder.save();
-})
-app.post("/sellOrder", async(req, res) => {
+});
+
+app.post("/sellOrder", async (req, res) => {
   let selledOrder = new OrdersModel({
     name: req.body.name,
     qty: req.body.qty,
@@ -75,11 +76,8 @@ app.post("/sellOrder", async(req, res) => {
     mode: req.body.mode,
   });
   selledOrder.save();
-})
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Something broke!' });
 });
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`App Started on PORT ${PORT}`);
 });
