@@ -33,9 +33,13 @@ const Menu = () => {
     // 2. Clear any client-side storage (optional cleanup)
     localStorage.removeItem("token"); // Remove if you were previously using this
     localStorage.removeItem("userData"); // Remove any other auth-related data
-    
+    toast.success("Logged out successfully", {
+      position: "bottom-left",
+    });
     // 3. Redirect to login page
-    window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
+    setTimeout(() => {
+      window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
+    }, 1000);
     
   } catch (error) {
     console.error("Logout failed:", error);
