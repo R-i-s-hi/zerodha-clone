@@ -20,8 +20,28 @@ const Menu = () => {
   }
 
   const handleLogout = async () => {
-      localStorage.removeItem("token"); // Clear JWT
-      window.location.href = "https://zerodha-clone-landing-page.onrender.com/login"; // Redirect to login
+      try {
+    // 1. Call backend logout endpoint to clear the HTTP-only cookie
+    await axios.post(
+      "https://zerodha-clone-n5oh.onrender.com/api/logout", 
+      {},
+      { 
+        withCredentials: true // Necessary for cookies to be sent
+      }
+    );
+    
+    // 2. Clear any client-side storage (optional cleanup)
+    localStorage.removeItem("token"); // Remove if you were previously using this
+    localStorage.removeItem("userData"); // Remove any other auth-related data
+    
+    // 3. Redirect to login page
+    window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
+    
+  } catch (error) {
+    console.error("Logout failed:", error);
+    // Fallback: Redirect even if API call fails
+    window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
+  }
   };
 
   const menuClass = "menu";

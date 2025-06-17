@@ -13,44 +13,31 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
 
-      const token = localStorage.getItem("token");
+      try {
+      const res = await axios.post(
+        "https://zerodha-clone-n5oh.onrender.com/api/verify-user",
+        {},
+        {
+          withCredentials: true, // Send cookies
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
 
-      if (!token) {
-        window.location.href="https://zerodha-clone-landing-page.onrender.com/login";
+      if (!res.data.status) {
+        window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
         return;
       }
 
-      try {
-        const res = await axios.post(
-          "https://zerodha-clone-n5oh.onrender.com/api/verify-user",
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!res.data.status) {
-          localStorage.removeItem("token");
-
-          // fallback URL in case backend messes up again
-          const redirectUrl = res.data.redirectTo?.startsWith("http")
-            ? res.data.redirectTo
-            : "https://zerodha-clone-landing-page.onrender.com/login";
-
-          window.location.href = redirectUrl; // full redirect, avoids wrong path joining
-          return;
-        }
-
-        if (res.data.status && !hasWelcomed) {
-          toast.info(`Welcome to Dashboard!`, {
-            position: "bottom-left",
-            icon: false,
-          });
-          setHasWelcomed(true);
-          setUsername(res.data.username);
-        }
+      if (res.data.status && !hasWelcomed) {
+        toast.info(`Welcome to Dashboard!`, {
+          position: "bottom-left",
+          icon: false,
+        });
+        setHasWelcomed(true);
+        setUsername(res.data.username);
+      }
 
       } catch (err) {
         console.error("User verification failed:", err);

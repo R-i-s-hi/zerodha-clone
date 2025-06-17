@@ -19,6 +19,14 @@ module.exports.Signup = async (req, res) => {
     const user = await User.create({ email, username, password, createdAt });
     const token = createSecretToken(user);
 
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'None',
+      domain: '.onrender.com', // Parent domain that covers both subdomains
+      maxAge: 24 * 60 * 60 * 1000 // 1 day expiration
+    });
+
     res.status(201).json({
       message: "User signed up successfully",
       success: true,
@@ -29,7 +37,6 @@ module.exports.Signup = async (req, res) => {
         createdAt: user.createdAt
       },
       redirectTo: "https://zerodha-clone-dashboard-2zpz.onrender.com",
-      token
     });
   } catch (error) {
     console.error("Signup Error:", error);
@@ -58,6 +65,14 @@ module.exports.Login = async (req, res) => {
 
     const token = createSecretToken(user);
 
+     res.cookie('token', token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'None',
+      domain: '.onrender.com', // Parent domain that covers both subdomains
+      maxAge: 24 * 60 * 60 * 1000 // 1 day
+    });
+
     res.status(200).json({
       message: "User logged in successfully",
       success: true,
@@ -68,10 +83,30 @@ module.exports.Login = async (req, res) => {
         createdAt: user.createdAt
       },
       redirectTo: "https://zerodha-clone-dashboard-2zpz.onrender.com",
-      token
     });
   } catch (error) {
     console.error("Login Error:", error);
     res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports.Logout = (req, res) => {
+  try {
+    // Clear the HTTP-only cookie
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'None',
+      domain: '.onrender.com' // Important for cross-subdomain clearing
+    });
+    
+    return res.status(200).json({ 
+      success: true,
+      message: "Logged out successfully" 
+    });
+    
+  } catch (error) {
+    console.error("Logout error:", error);
+    return res.status(500).json({ success: false, message: "Logout failed" });
   }
 };

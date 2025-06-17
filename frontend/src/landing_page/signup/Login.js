@@ -33,14 +33,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {                                                                //pass email and password to backend
-      const {data} = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/login", {email, password});
+      const {data} = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/login", {email, password}, { withCredentials: true });
           
       if (data.success) {
-        localStorage.setItem("token", data.token);
-
         handleSuccess(data.message);
         setTimeout(() => {
-          window.location.href = "https://zerodha-clone-dashboard-2zpz.onrender.com"; // redirect to dashboard after successful login
+          window.location.href = data.redirectTo; // redirect to dashboard after successful login
         }, 1000);
       } else {
         handleError(data.message || "Login failed");

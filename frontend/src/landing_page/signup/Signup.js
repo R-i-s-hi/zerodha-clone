@@ -43,15 +43,13 @@ function Signup() {
         return;
       }
 
-      const { data } = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/signup", {email, username, password});
-      const { success, message, token } = data;
+      const { data } = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/signup", {email, username, password}, { withCredentials: true });
+      const { success, message} = data;
 
       if (success && token) {
-        localStorage.setItem("token", token);
-
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "https://zerodha-clone-dashboard-2zpz.onrender.com"; // redirect to dashboard after successful signup
+          window.location.href = data.redirectTo; // redirect to dashboard after successful signup
         }, 1000);
       } else {
         handleError(message || "Signup failed");
