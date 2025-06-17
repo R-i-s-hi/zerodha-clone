@@ -9,7 +9,6 @@ module.exports.userVerification = async (req, res) => {
     return res.status(401).json({ 
       status: false, 
       message: "No token provided",
-      redirectTo: "https://zerodha-clone-landing-page.onrender.com/login"
     });
   }
 
@@ -28,7 +27,6 @@ module.exports.userVerification = async (req, res) => {
       return res.status(404).json({ 
         status: false, 
         message: "User not found",
-        // redirectTo: "https://zerodha-clone-landing-page.onrender.com/login"
       });
     }
 
