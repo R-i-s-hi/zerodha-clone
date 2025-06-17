@@ -41,7 +41,6 @@ app.use("/api", (req, res, next) => {
   next();
 });
 app.use("/api", authRoute);
-app.post("/api/verify-user", userVerification); 
 app.get("/allholdings", async(req, res) => {
     let allHoldings = await HoldingsModel.find({});
     res.json(allHoldings);
@@ -72,7 +71,7 @@ app.post("/sellOrder", async(req, res) => {
   });
   selledOrder.save();
 })
-app.get("/getStock/:uid", async(req, res) => {
+app.get("/getStock/:stockid", async(req, res) => {
   const stock = await OrdersModel.findOne({ name: req.params.uid });
   res.json(stock);
 });
