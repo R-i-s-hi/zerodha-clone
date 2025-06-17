@@ -4,6 +4,7 @@ import GeneralContext from "./GeneralContext";
 
 import axios from "axios";
 import "./BuyActionWindow.css";
+import { toast } from "react-toastify";
 
 const BuyActionWindow = ({ uid }) => {
 
@@ -13,13 +14,14 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    axios.post("http://localhost:5000/newOrder", {
+    axios.post("https://zerodha-clone-n5oh.onrender.com/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
       mode: "BUY",
     });
-
+    toast.success("Buy order placed successfully!", {
+      position: "bottom-left",});
     closeBuyWindow();
   };
 

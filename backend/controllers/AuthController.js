@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 // Signup Controller
 module.exports.Signup = async (req, res) => {
   try {
-    const { email, username, password, createdAt } = req.body;
+    const { email, username, password } = req.body;
 
     if (!email || !username || !password) {
       return res.status(400).json({ message: "All fields are required" });
@@ -16,7 +16,7 @@ module.exports.Signup = async (req, res) => {
       return res.status(409).json({ message: "User already exists" });
     }
 
-    const user = await User.create({ email, username, password, createdAt });
+    const user = await User.create({ email, username, password });
     const token = createSecretToken(user);
 
     res.cookie('token', token, {

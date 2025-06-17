@@ -4,31 +4,21 @@ import GeneralContext from "./GeneralContext";
 
 import axios from "axios";
 import "./SellActionWindow.css";
+import { toast } from "react-toastify";
 
-const SellActionWindow = ({ uid }) => {
+const SellActionWindow = () => {
 
   const { closeSellWindow } = useContext(GeneralContext);
   const [stockData, setStockData] = useState({});
 
-  useEffect(() => {
-    axios.get(`http://localhost:5000/getStock/${uid}`)
-    .then((res) => {
-      setStockData(res.data);  
-    })
-    .catch((error) => {
-      console.error("Error fetching stock data:", error);
-    });
-
-  }, [uid]);
-
   const handleSellClick = () => {
-    if (!stockData) return;
 
-    axios.post("http://localhost:5000/sellOrder", {
+    axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
       ...stockData,
       mode: "SELL",
     });
-
+    toast.success("Sell order placed successfully!", {
+      position: "bottom-left",});  
     closeSellWindow();
   };
 
@@ -40,17 +30,9 @@ const SellActionWindow = ({ uid }) => {
     <div className="container" id="buy-window" draggable="true">
       <div className="regular-order">
         <div className="inputs">
-          {stockData ? (
             <div className="d-block align-items-center justify-content-start">
-                <h2 style={{color: "red", marginTop: "0", paddingBottom: "1rem", borderBottom: "1px solid #ddd"}}>{stockData.name}</h2>
-            
-                <div>
-                  <p style={{marginTop: "1.8rem", marginBottom: "0.5rem"}}>Current Price: ₹{stockData.price}</p>
-                  <p style={{margin: "0"}}>Stock Quantity: {stockData.qty}</p>
-                </div>
+                <h2 style={{color: "red", marginTop: "0", paddingBottom: "1rem", borderBottom: "1px solid #ddd"}}>SELL STOCKS</h2>
             </div> 
-          ) : ( <p>Please buy the stock to sell</p> )   
-        } 
         </div>
       </div>
 

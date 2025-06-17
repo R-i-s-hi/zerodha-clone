@@ -9,7 +9,6 @@ const {HoldingsModel} = require("./models/HoldingsModel");
 const {PositionsModel} = require("./models/PositionsModel");
 const {OrdersModel} = require("./models/OrdersModel");
 const authRoute = require("./routes/AuthRoute");
-const { userVerification } = require("./middlewares/AuthMiddleware");
 const PORT = 5000;
 const URL = process.env.MONGO_URL;
 const app = express();
@@ -24,6 +23,7 @@ mongoose
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
   origin: [
     "https://zerodha-clone-landing-page.onrender.com",
@@ -35,6 +35,11 @@ app.use(cors({
 }));
 
 app.options('*', cors()); 
+
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  next();
+});
 
 app.use("/api", (req, res, next) => {
   console.log("API Route Hit:", req.method, req.url);
@@ -71,10 +76,6 @@ app.post("/sellOrder", async(req, res) => {
   });
   selledOrder.save();
 })
-app.get("/getStock/:stockid", async(req, res) => {
-  const stock = await OrdersModel.findOne({ name: req.params.uid });
-  res.json(stock);
-});
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something broke!' });
