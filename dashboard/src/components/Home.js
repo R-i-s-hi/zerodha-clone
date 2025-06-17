@@ -26,8 +26,8 @@ const Home = () => {
       );
 
       if (!res.data.status) {
-        window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
-        return;
+        // window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
+        // return;
       }
 
       if (res.data.status && !hasWelcomed) {
