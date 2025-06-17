@@ -7,7 +7,6 @@ import OpenAccount from "../OpenAccount";
 
 function Signup() {
 
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +45,7 @@ function Signup() {
       const { data } = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/signup", {email, username, password}, { withCredentials: true });
       const { success, message} = data;
 
-      if (success && token) {
+      if (success && data.redirectTo) {
         handleSuccess(message);
         setTimeout(() => {
           window.location.href = data.redirectTo; // redirect to dashboard after successful signup
