@@ -5,18 +5,14 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
-
 const {HoldingsModel} = require("./models/HoldingsModel");
 const {PositionsModel} = require("./models/PositionsModel");
 const {OrdersModel} = require("./models/OrdersModel");
-
 const authRoute = require("./routes/AuthRoute");
 const { userVerification } = require("./middlewares/AuthMiddleware");
-
 const PORT = 5000;
 const URL = process.env.MONGO_URL;
 const app = express();
-
 
 mongoose
   .connect(URL, {
@@ -44,28 +40,20 @@ app.use("/api", (req, res, next) => {
   console.log("API Route Hit:", req.method, req.url);
   next();
 });
-
-
-
 app.use("/api", authRoute);
-
 app.post("/api/verify-user", userVerification); 
-
 app.get("/allholdings", async(req, res) => {
     let allHoldings = await HoldingsModel.find({});
     res.json(allHoldings);
 })
-
 app.get("/allpositions", async(req, res) => {
     let allPositions = await PositionsModel.find({});
     res.json(allPositions);
 })
-
 app.get("/allorders", async(req, res) => {
   let allOrders = await OrdersModel.find({});
   res.json(allOrders);
 })
-
 app.post("/newOrder", async(req, res) => {
   let newOrder = new OrdersModel({
     name: req.body.name,
@@ -75,7 +63,6 @@ app.post("/newOrder", async(req, res) => {
   });
   newOrder.save();
 })
-
 app.post("/sellOrder", async(req, res) => {
   let selledOrder = new OrdersModel({
     name: req.body.name,
@@ -85,12 +72,14 @@ app.post("/sellOrder", async(req, res) => {
   });
   selledOrder.save();
 })
-
 app.get("/getStock/:uid", async(req, res) => {
   const stock = await OrdersModel.findOne({ name: req.params.uid });
   res.json(stock);
 });
-
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something broke!' });
+});
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`App Started on PORT ${PORT}`);
 });
