@@ -44,7 +44,7 @@ app.use("/api", (req, res, next) => {
   next();
 });
 app.use("/api", authRoute);
-app.use("/api/verify-user", userVerification.userVerification, (req, res) => {
+app.post("/api/verify-user", userVerification.userVerification, (req, res) => {
   return res.json({
       status: true,
       username: req.user.username

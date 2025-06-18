@@ -42,7 +42,9 @@ function Signup() {
         return;
       }
 
-      const { data } = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/signup", {email, username, password}, { withCredentials: true });
+      const { data } = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/signup", {email, username, password}, { withCredentials: true, headers: {
+      "Content-Type": "application/json"
+      } });
       const { success, message} = data;
 
       if (success && data.redirectTo) {
