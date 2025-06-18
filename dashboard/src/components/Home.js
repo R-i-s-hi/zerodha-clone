@@ -35,7 +35,7 @@ const Home = () => {
       }
 
       } catch (err) {
-        console.error("User verification failed:", err);
+        console.error("User verification failed:",  err.response?.data || err.message || err);
         toast.error("User verification failed. Please log in again.", { position: "bottom-left" });
         localStorage.removeItem("token");
       }
