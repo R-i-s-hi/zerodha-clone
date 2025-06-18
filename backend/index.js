@@ -84,7 +84,9 @@ app.post("/sellOrder", async (req, res) => {
   });
   selledOrder.save();
 });
-
+app.get("/", (req, res) => {
+  res.send("Welcome to Zerodha Clone Backend");
+});
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`App Started on PORT ${PORT}`);
 });
