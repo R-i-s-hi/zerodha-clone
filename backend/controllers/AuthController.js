@@ -23,7 +23,7 @@ module.exports.Signup = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: 'None',
-      domain: '.onrender.com', // Parent domain that covers both subdomains
+      domain: 'zerodha-clone-dashboard-2zpz.onrender.com', // Parent domain that covers both subdomains
       maxAge: 24 * 60 * 60 * 1000 // 1 day expiration
     });
 
@@ -69,7 +69,7 @@ module.exports.Login = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: 'None',
-      domain: '.onrender.com', // Parent domain that covers both subdomains
+      domain: 'zerodha-clone-dashboard-2zpz.onrender.com', // Parent domain that covers both subdomains
       maxAge: 24 * 60 * 60 * 1000 // 1 day
     });
 

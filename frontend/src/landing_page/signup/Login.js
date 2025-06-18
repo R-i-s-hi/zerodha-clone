@@ -33,9 +33,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {                                                                //pass email and password to backend
-      const {data} = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/login", {email, password}, { withCredentials: true, headers: {
-      "Content-Type": "application/json"
-    } });
+      const {data} = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/login", {email, password}, {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json"}
+      });
           
       if (data.success) {
         handleSuccess(data.message);
