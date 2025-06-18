@@ -44,7 +44,12 @@ app.use("/api", (req, res, next) => {
   next();
 });
 app.use("/api", authRoute);
-app.use("/api", userVerification.userVerification);
+app.use("/api", userVerification.userVerification, (req, res) => {
+  return res.json({
+      status: true,
+      username: req.user.username
+    });
+});
 
 app.get("/allholdings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
