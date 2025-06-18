@@ -8,7 +8,9 @@ const { HoldingsModel } = require("./models/HoldingsModel");
 const { PositionsModel } = require("./models/PositionsModel");
 const { OrdersModel } = require("./models/OrdersModel");
 const authRoute = require("./routes/AuthRoute");
-const authMiddleware = require("./middlewares/AuthMiddleware");
+const userVerification = require("./middlewares/AuthMiddleware");
+console.log(typeof userVerification);
+console.log(typeof authRoute);
 const PORT = 5000;
 const URL = process.env.MONGO_URL;
 const app = express();
@@ -42,7 +44,7 @@ app.use("/api", (req, res, next) => {
   next();
 });
 app.use("/api", authRoute);
-app.use("/api", authMiddleware);
+app.use("/api", userVerification.userVerification);
 
 app.get("/allholdings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});

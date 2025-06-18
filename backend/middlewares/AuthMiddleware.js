@@ -2,7 +2,7 @@ require("dotenv").config();
 const User = require("../models/UsersModel");
 const jwt = require("jsonwebtoken");
 
-module.exports.userVerification = async (req, res) => {
+module.exports.userVerification = async (req, res, next) => {
   const token = req.cookies.token;
 
   if (!token) {
@@ -38,4 +38,5 @@ module.exports.userVerification = async (req, res) => {
     console.error("Token verification error:", error);
     return res.status(403).json({ status: false, message: "Invalid token", redirectTo: "https://zerodha-clone-landing-page.onrender.com" });
   }
+  next();
 };
