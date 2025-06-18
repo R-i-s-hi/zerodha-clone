@@ -18,7 +18,7 @@ const SellActionWindow = ({uid}) => {
       const data = res.data;
       setStockData(data);
 
-      axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
+      return axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
         ...stockData,
         mode: "SELL",
       });
