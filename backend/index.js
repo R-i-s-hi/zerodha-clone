@@ -94,6 +94,16 @@ app.post("/sellOrder", async (req, res) => {
   });
   selledOrder.save();
 });
+app.get("/getStock/:name", async (req, res) => {
+  const uid = req.params.name;
+
+  const stock = await OrdersModel.findOne({ name: uid });
+  if (!stock) {
+    return res.status(404).json({ message: "Stock not found" });
+  }
+  res.json(stock);
+});  
+
 app.get("/", (req, res) => {
   res.send("Welcome to Zerodha Clone Backend");
 });

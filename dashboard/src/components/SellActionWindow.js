@@ -6,12 +6,19 @@ import axios from "axios";
 import "./SellActionWindow.css";
 import { toast } from "react-toastify";
 
-const SellActionWindow = () => {
+const SellActionWindow = ({uid}) => {
 
   const { closeSellWindow } = useContext(GeneralContext);
   const [stockData, setStockData] = useState({});
 
   const handleSellClick = () => {
+    axios.get(`https://zerodha-clone-n5oh.onrender.com/getStock/${uid}`)
+      .then(res => {
+        setStockData(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch stock data:", err);
+      });
 
     axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
       ...stockData,
