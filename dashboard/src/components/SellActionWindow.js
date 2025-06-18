@@ -16,7 +16,7 @@ const SellActionWindow = ({uid}) => {
     .then((res) => {
       const data = res.data;
       
-      console.log("About to POST sell order for:", stock);
+      console.log("About to POST sell order for:", data);
       return axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
         ...data,
         mode: "SELL",
