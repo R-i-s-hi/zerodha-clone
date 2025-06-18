@@ -16,8 +16,8 @@ const BuyActionWindow = ({ uid }) => {
   const handleBuyClick = () => {
     axios.post("https://zerodha-clone-n5oh.onrender.com/newOrder", {
       name: uid,
-      qty: stockQuantity,
-      price: stockPrice,
+      qty: parseInt(stockQuantity),
+      price: parseFloat(stockPrice),
       mode: "BUY",
     });
     toast.success("Buy order placed successfully!", {

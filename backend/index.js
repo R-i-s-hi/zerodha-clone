@@ -94,8 +94,8 @@ app.post("/sellOrder", async (req, res) => {
   });
   selledOrder.save();
 });
-app.get("/getStock/:name", async (req, res) => {
-  const uid = req.params.name;
+app.get("/getStock/:uid", async (req, res) => {
+  const uid = req.params.uid;
 
   const stock = await OrdersModel.findOne({ name: uid });
   if (!stock) {
