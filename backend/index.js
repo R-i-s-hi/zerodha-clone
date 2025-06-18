@@ -37,7 +37,6 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.options('*', cors());
 
 app.use("/api", (req, res, next) => {
   console.log("API Route Hit:", req.method, req.url);
