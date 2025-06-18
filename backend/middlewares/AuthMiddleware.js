@@ -21,7 +21,6 @@ module.exports.userVerification = async (req, res, next) => {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
-        domain: '.onrender.com'
       });
       
       return res.status(404).json({ 

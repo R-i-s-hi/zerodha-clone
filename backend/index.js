@@ -43,6 +43,16 @@ app.use("/api", (req, res, next) => {
   next();
 });
 app.use("/api", authRoute);
+
+app.get("/cookie-test", (req, res) => {
+  res.cookie("token", "test-value", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None"
+  });
+  res.json({ message: "Cookie sent" });
+});
+
 app.post("/api/verify-user", userVerification.userVerification, (req, res) => {
   return res.json({
       status: true,
