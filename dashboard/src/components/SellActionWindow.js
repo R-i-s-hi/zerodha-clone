@@ -9,17 +9,16 @@ import { toast } from "react-toastify";
 const SellActionWindow = ({uid}) => {
 
   const { closeSellWindow } = useContext(GeneralContext);
-  const [stockData, setStockData] = useState({});
 
   const handleSellClick = () => {
 
   axios.get(`https://zerodha-clone-n5oh.onrender.com/getStock/${uid}`)
     .then((res) => {
       const data = res.data;
-      setStockData(data);
-
+      
+      console.log("About to POST sell order for:", stock);
       return axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
-        ...stockData,
+        ...data,
         mode: "SELL",
       });
     })
