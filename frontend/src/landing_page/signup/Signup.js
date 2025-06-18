@@ -52,7 +52,7 @@ function Signup() {
         handleSuccess(message);
         setTimeout(() => {
           window.location.href = data.redirectTo; // redirect to dashboard after successful signup
-        }, 1000);
+        }, 2000);
       } else {
         handleError(message || "Signup failed");
       }

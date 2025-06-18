@@ -42,7 +42,7 @@ const Login = () => {
         handleSuccess(data.message);
         setTimeout(() => {
           window.location.href = data.redirectTo; // redirect to dashboard after successful login
-        }, 1000);
+        }, 2000);
       } else {
         handleError(data.message || "Login failed");
       }
