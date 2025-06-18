@@ -12,23 +12,28 @@ const SellActionWindow = ({uid}) => {
   const [stockData, setStockData] = useState({});
 
   const handleSellClick = () => {
-    axios.get(`https://zerodha-clone-n5oh.onrender.com/getStock/${uid}`)
-      .then(res => {
-        setStockData(res.data);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch stock data:", err);
+
+  axios.get(`https://zerodha-clone-n5oh.onrender.com/getStock/${uid}`)
+    .then(res => {
+      const data = res.data;
+      setStockData(data);
+
+      return axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
+        ...stockData,
+        mode: "SELL",
       });
-
-    axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
-      ...stockData,
-      mode: "SELL",
+    })
+    .then(() => {
+      toast.success("Sell order placed successfully!", {
+        position: "bottom-left",
+      });
+      closeSellWindow();
+    })
+    .catch((err) => {
+      console.error("Sell flow failed:", err);
+      toast.error("Could not place sell order");
     });
-    toast.success("Sell order placed successfully!", {
-      position: "bottom-left",});  
-    closeSellWindow();
   };
-
   const handleCancelClick = () => {
     closeSellWindow();
   };
