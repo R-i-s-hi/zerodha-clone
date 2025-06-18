@@ -15,18 +15,16 @@ const SellActionWindow = ({uid}) => {
   axios.get(`https://zerodha-clone-n5oh.onrender.com/getStock/${uid}`)
     .then((res) => {
       const data = res.data;
-      
-      console.log("About to POST sell order for:", data);
-      return axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
+
+      axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
         ...data,
         mode: "SELL",
-      });
-    })
-    .then(() => {
-      toast.success("Sell order placed successfully!", {
-        position: "bottom-left",
-      });
-      closeSellWindow();
+      }).then(() => {
+        toast.success("Sell order placed successfully!", {
+          position: "bottom-left",
+        });
+        closeSellWindow();
+      })
     })
     .catch((err) => {
       console.error("Sell flow failed:", err);
