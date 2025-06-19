@@ -1,4 +1,4 @@
-# Zerodha Clone 💹
+# Zerodha Clone - Full-stack website
 
 A production-ready **stock trading platform** inspired by [Zerodha](https://zerodha.com), built using **React**,**React Router**, **Node.js**, **Express**, **MongoDB**, and **JWT**.  
 
@@ -46,6 +46,7 @@ A production-ready **stock trading platform** inspired by [Zerodha](https://zero
 ---
 
 ## 🔗 Connect with me
+
 -📍 Delhi, India
 - 💼 [**LinkedIn**](https://www.linkedin.com/in/rishabh-singh-0684882a6/)
 - ✉️ tcrr2005@gmail.com
