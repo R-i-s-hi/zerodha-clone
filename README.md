@@ -45,7 +45,7 @@ A production-ready **stock trading platform** inspired by [Zerodha](https://zero
 
 ---
 
-## 🔗 Connect with me
+### 🔗 Connect with me
 
 -📍 Delhi, India
 - 💼 [**LinkedIn**](https://www.linkedin.com/in/rishabh-singh-0684882a6/)
