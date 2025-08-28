@@ -1,6 +1,6 @@
 # Zerodha Clone - Full-stack website
 
-A production-ready **stock trading platform** inspired by [Zerodha](https://zerodha.com), built using **React**,**React Router**, **Node.js**, **Express**, **MongoDB**, and **JWT**.  
+A **stock trading platform** inspired by [Zerodha](https://zerodha.com), built using **React**,**React Router**, **Node.js**, **Express**, **MongoDB**, and **JWT**.  
 
 ---
 
