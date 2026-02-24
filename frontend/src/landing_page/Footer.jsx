@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="container mt-5 px-5 border-top" style={{backgroundColor: " #fbfbfb"}}>
-      <div className="d-flex justify-content-between mt-5 pt-3">
+    <div className="footer mt-5 mx-0 border-top">
+      <div className="footerDiv1 mt-5 pt-3">
         <div style={{ width: "30%" }}>
           <img src="images/logo.svg" alt="logo" style={{ width: "45%" }}></img>
           <p className="mt-4 text-muted" style={{fontSize: "14px", fontWeight: "600"}}>
@@ -36,9 +36,10 @@ function Footer() {
             </a>
           </div>
         </div>
-        <div>
+        <div className="footerDiv2" style={{width: "70%"}}>
+          <div>
           <h4 className="mb-4">Company</h4>
-          <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none" }}>
+          <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none", fontSize: "14px" }}>
             <li>
               <a href="" className="nav-link">
                 About
@@ -85,71 +86,72 @@ function Footer() {
               </a>
             </li>
           </ul>
-        </div>
-        <div>
-          <h4 className="mb-4">Support</h4>
-          <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none" }}>
-            <li>
-              <a href="" className="nav-link">
-                Contact us
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Suppport portal
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Z-Connect blog
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                List of charges
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Downloads & resources
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Videos
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Market overview
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                How to file a complaint?
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Status of your complaints
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="mb-4">Account</h4>
-          <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none" }}>
-            <li>
-              <a href="" className="nav-link">
-                Open an account
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Fund transfer
-              </a>
-            </li>
-          </ul>
+          </div>
+          <div>
+            <h4 className="mb-4">Support</h4>
+            <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none", fontSize: "14px" }}>
+              <li>
+                <a href="" className="nav-link">
+                  Contact us
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  Suppport portal
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  Z-Connect blog
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  List of charges
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  Downloads & resources
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  Videos
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  Market overview
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  How to file a complaint?
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  Status of your complaints
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-4">Account</h4>
+            <ul className="p-0 vstack text-muted fw-medium gap-2" style={{ listStyleType: "none", fontSize: "14px" }}>
+              <li>
+                <a href="" className="nav-link">
+                  Open an account
+                </a>
+              </li>
+              <li>
+                <a href="" className="nav-link">
+                  Fund transfer
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <p className="mt-5 text-muted mb-5" style={{fontSize: "11px"}}>

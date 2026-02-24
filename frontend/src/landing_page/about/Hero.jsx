@@ -2,15 +2,15 @@ import React from "react";
 
 function Hero() {
   return (
-    <div className="container" style={{ marginTop: "10rem", color: "#424242" }}>
-      <div className="row" style={{ marginBottom: "6.5rem" }}>
-        <h1 className="fs-2 text-center">
+    <div className="container topContainer" style={{color: "#424242" }}>
+      <div className="row mb-lg-5 mb-4">
+        <h1 className="text-center">
           We pioneered the discount broking model in India.<br></br>
           Now, we are breaking ground with our technology.
         </h1>
       </div>
       <hr></hr>
-      <div className="d-flex justify-content-center fw-medium text-muted" style={{marginTop: "6.5rem",marginBottom: "6.5rem", fontSize: "17px", lineHeight: "1.6"}}>
+      <div className="d-lg-flex d-none justify-content-between fw-medium text-muted" style={{marginTop: "6.5rem",marginBottom: "6.5rem", fontSize: "17px", lineHeight: "1.6"}}>
         <div className="">
           <p>
             We kick-started operations on the 15th of August, 2010 <br></br>
@@ -29,7 +29,6 @@ function Hero() {
             <br></br> trading volumes.
           </p>
         </div>
-        <div style={{width: "4rem"}}></div>
         <div className="">
           <p>
             In addition, we run a number of popular open online <br></br> educational and
