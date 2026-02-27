@@ -4,14 +4,19 @@
     width: 25%;
     height: 63%;
     background: rgb(245, 245, 245);
-    position: absolute;
-    bottom: 0;
-    left: 35%;
+    position: fixed;
+    bottom: 13px;
+    padding-inline: 0;
+    left: 33%;
     cursor: move;
     box-sizing: border-box;
-    z-index: 100;
+    z-index: 2070 !important;
     border-radius: var(--radius);
     border: 1px solid rgb(238, 238, 238);
+  }
+
+  @media(max-width: 996px) {
+    .container { width: 90%; left: 5%; top: 10%; }
   }
   
   .dragging {
@@ -128,7 +133,7 @@
   .inputs fieldset input {
     border: none;
     margin-right: 8px;
-    max-width: 130px;
+    max-width: 119px;
     min-height: 35px;
     padding: 0 12px;
     box-sizing: border-box;
@@ -174,12 +179,13 @@
   }
   
   .btn-grey {
-    background: #d4d4d4;
-    color: #666666;
+    background: #d4d4d4 !important;
+    color: #666666 !important;
   }
   
   .btn-red {
-    background: #f56834;
+    color: white !important;
+    background: #f56834 !important;
   }
   
   /* sudo selectors */
@@ -212,11 +218,11 @@
   }
   
   .btn-red:hover {
-    background: #f56734dc;
+    background: #f56734dc !important;
   }
   
   .btn-grey:hover {
-    background: #9b9b9b;
-    color: #fff;
+    background: #9b9b9b !important;
+    color: #fff !important;
   }
   

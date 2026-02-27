@@ -40,7 +40,23 @@ code {
   text-align: center;
   font-size: 0.8rem;
   color: rgb(179, 179, 179);
-  margin-right: 2rem;
+  margin: auto;
+}
+
+.links {
+    margin-top: 0;
+}
+
+@media(max-width: 996px) {
+  .funds {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .links {
+    margin-top: 1rem;
+  }
 }
 
 .btn {
@@ -53,11 +69,22 @@ code {
 }
 
 .btn-green {
-  background: #4caf50;
+  background-color: #4caf50 !important;
+    color: white !important;
 }
 
+.btn-green:hover {
+  background-color: #80c182 !important;
+}
+
+hr {
+  position: relative;
+  z-index: -2;
+}
+ 
 .btn-blue {
   background: #4184f3;
+  color: white !important;
 }
 
 .row {
@@ -156,6 +183,10 @@ code {
   margin-bottom: 2%;
 }
 
+.order-table {
+  overflow-x: auto;
+}
+
 .order-table table {
   width: 100%;
   border-collapse: collapse;
@@ -252,7 +283,7 @@ code {
 }
 
 .menu-container {
-  flex-basis: 68%;
+  width: 100%;
   height: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -492,6 +523,8 @@ hr {
   height: 1px;
   margin: 20px 0;
   margin-bottom: 5%;
+  position: relative;
+  z-index: -2;
 }
 
 .section {
@@ -573,20 +606,18 @@ hr {
   height: 10vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-shadow: 0px 0px 4px 2px rgb(236, 235, 235);
   box-sizing: border-box;
   z-index: 9;
 }
 
 .indices-container {
-  flex-basis: 32%;
-  height: 100%;
-  padding: 10px 20px;
-  border-right: 1px solid rgb(224, 224, 224);
-  box-sizing: border-box;
+  height: 12%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .nifty {
@@ -629,6 +660,100 @@ hr {
   color: rgb(146, 146, 146);
 }
 
+.active {
+  color: #fa0e0e !important;
+}
+
+.navbar-toggler {
+  border: 1px solid #d3d3d3 !important;
+  color: #a5a5a5;
+  font-size: 15px;
+  padding: 6px 10px 5px 10px;
+  box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.1);
+}
+
+.profileDiv {
+  display: flex;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+@media(max-width: 996px) {
+
+  .collapse {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    background-color: white;
+    width: 100vw;
+    min-width: 280px;
+  }
+  #navbarMenu ul {
+    border-radius: 16px;
+    padding: 1rem;
+    background-color: white;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-width: 280px;
+    height: 100vh;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar-collapse li {
+    padding-block: 10px;
+    border: 1px solid #212529;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .profileDiv {
+    display: none !important;
+  }
+  .watchlist-container {
+    display: none !important;
+  }
+  .content {
+    width: 100%;
+    flex-basis: auto;
+  }
+  .watchlistToggleBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #535353;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0, 0.1);
+    margin-bottom: 2rem;
+  }
+  .summary-section .offcanvas {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    bottom: 10%;
+    width: 80%;
+    border-radius: 28px;
+  }
+  .summary-section .offcanvas-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #d3d3d3;
+  }
+  .summary-section .offcanvas-body {
+    padding: 0;
+  }
+
+}
+
+.navbar-toggler:focus, .navbar-toggler:active { outline: none !important; box-shadow: none !important; border: 1px solid #d3d3d3 !important; /* optional if you want no border at all */ }
+
 /* sudo selectors */
 .index:hover {
   cursor: pointer;
@@ -642,9 +767,19 @@ hr {
   overflow-y: auto; /* Allows scrolling */
   scrollbar-width: none; /* Hides scrollbar in Firefox */
 }
+.watchlist-container-offcanvas {
+  flex-basis: 32%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto; /* Allows scrolling */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
 
 .watchlist-container::-webkit-scrollbar {
   display: none; /* Hides scrollbar in Chrome and Edge */
+}
+.watchlist-container-offcanvas::-webkit-scrollbar {
+  display: none;
 }
 
 .search-container {

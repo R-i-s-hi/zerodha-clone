@@ -3,6 +3,7 @@ import TopBar from "./TopBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import {GeneralContextProvider} from "./GeneralContext";
 
 
 const Home = () => {
@@ -47,9 +48,12 @@ const Home = () => {
 
   return (
     <>
-      <TopBar />
+    <GeneralContextProvider>
+      <TopBar style={{position: "relative"}} />
       <Dashboard username={username} />
       <ToastContainer />
+
+    </GeneralContextProvider>
     </>
   );
 };

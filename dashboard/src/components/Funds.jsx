@@ -6,12 +6,14 @@ const Funds = () => {
     <>
       <div className="funds">
         <p>Instant, zero-cost fund transfers with UPI </p>
-        <Link className="btn btn-green">Add funds</Link>
-        <Link className="btn btn-blue">Withdraw</Link>
+        <div className="links">'
+          <Link className="btn btn-green">Add funds</Link>
+          <Link className="btn btn-blue">Withdraw</Link>
+        </div>
       </div>
 
-      <div className="row">
-        <div className="col">
+      <div className="d-flex flex-md-row flex-column justify-content-center align-items-center">
+        <div className="w-100">
           <span>
             <p>Equity</p>
           </span>
@@ -74,11 +76,9 @@ const Funds = () => {
           </div>
         </div>
 
-        <div className="col">
-          <div className="commodity">
-            <p>You don't have a commodity account</p>
-            <Link className="btn btn-blue">Open Account</Link>
-          </div>
+        <div className="commodity">
+          <p>You don't have a commodity account</p>
+          <Link className="btn btn-blue">Open Account</Link>
         </div>
       </div>
     </>

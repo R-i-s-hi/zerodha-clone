@@ -5,8 +5,9 @@
     height: 63%;
     background: rgb(245, 245, 245);
     position: absolute;
-    bottom: 0;
-    left: 35%;
+    bottom: 13px;
+    padding-inline: 0;
+    left: 33%;
     cursor: move;
     box-sizing: border-box;
     z-index: 100;
@@ -128,7 +129,7 @@
   .inputs fieldset input {
     border: none;
     margin-right: 8px;
-    max-width: 130px;
+    max-width: 119px;
     min-height: 35px;
     padding: 0 12px;
     box-sizing: border-box;
@@ -174,8 +175,8 @@
   }
   
   .btn-grey {
-    background: #d4d4d4;
-    color: #666666;
+    background: #d4d4d4 !important;
+    color: #666666 !important;
   }
   
   .btn-blue {
@@ -216,7 +217,7 @@
   }
   
   .btn-grey:hover {
-    background: #9b9b9b;
-    color: #fff;
+    background: #9b9b9b !important;
+    color: #fff !important;
   }
   
