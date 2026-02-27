@@ -123,7 +123,6 @@ const Menu = () => {
           </div>
         </div>
       </nav>
-      <ToastContainer />
     </>
   );
 };
