@@ -27,8 +27,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
   origin: [
-    "https://zerodha-clone-landing-page.onrender.com",
-    "https://zerodha-clone-dashboard-2zpz.onrender.com"
+    "https://zerodha-clone-ecru-seven.vercel.app",
+    "https://zerodha-clone-dashboard-plum.vercel.app"
   ],
   methods: ["GET", "POST", "OPTIONS"],
   credentials: true,

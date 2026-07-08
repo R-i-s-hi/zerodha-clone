@@ -32,8 +32,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {                                                                //pass email and password to backend
-      const {data} = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/login", {email, password}, {
+    try {                                                                
+      const {data} = await axios.post("https://zerodha-clone-dashboard-plum.vercel.app/api/login", {email, password}, {
         withCredentials: true,
         headers: { "Content-Type": "application/json"}
       });
