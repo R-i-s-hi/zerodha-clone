@@ -38,7 +38,7 @@ const Menu = () => {
     });
     // 3. Redirect to login page
     setTimeout(() => {
-      window.location.href = "https://zerodha-clone-ecru-seven.vercel.app//login";
+      window.location.href = "https://zerodha-clone-ecru-seven.vercel.app";
     }, 1000);
     
   } catch (error) {
