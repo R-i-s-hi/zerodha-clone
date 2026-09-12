@@ -38,13 +38,13 @@ const Menu = () => {
     });
     // 3. Redirect to login page
     setTimeout(() => {
-      window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
+      window.location.href = "https://zerodha-clone-ecru-seven.vercel.app//login";
     }, 1000);
     
   } catch (error) {
     console.error("Logout failed:", error);
     // Fallback: Redirect even if API call fails
-    window.location.href = "https://zerodha-clone-landing-page.onrender.com/login";
+    window.location.href = "https://zerodha-clone-dashboard-plum.vercel.app/login";
   }
   };
 

@@ -32,6 +32,6 @@ module.exports.userVerification = async (req, res, next) => {
     next();
   } catch (error) {
     console.error("Token verification error:", error);
-    return res.status(403).json({ status: false, message: "Invalid token", redirectTo: "https://zerodha-clone-landing-page.onrender.com" });
+    return res.status(403).json({ status: false, message: "Invalid token", redirectTo: "https://zerodha-clone-ecru-seven.vercel.app/login" });
   }
 };
