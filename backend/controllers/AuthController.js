@@ -35,7 +35,7 @@ module.exports.Signup = async (req, res) => {
         email: user.email,
         createdAt: user.createdAt
       },
-      redirectTo: "https://zerodha-clone-dashboard-2zpz.onrender.com",
+      redirectTo: "https://zerodha-clone-dashboard-plum.vercel.app/",
     });
   } catch (error) {
     console.error("Signup Error:", error);
@@ -80,7 +80,7 @@ module.exports.Login = async (req, res) => {
         email: user.email,
         createdAt: user.createdAt
       },
-      redirectTo: "https://zerodha-clone-dashboard-2zpz.onrender.com",
+      redirectTo: "https://zerodha-clone-dashboard-plum.vercel.app/",
     });
   } catch (error) {
     console.error("Login Error:", error);
