@@ -42,7 +42,7 @@ function Signup() {
         return;
       }
 
-      const { data } = await axios.post("https://zerodha-clone-dashboard-plum.vercel.app/api/signup", {email, username, password}, { 
+      const { data } = await axios.post("https://zerodha-clone-n5oh.onrender.com/api/signup", {email, username, password}, { 
         withCredentials: true,
         headers: { "Content-Type": "application/json" }
       });
@@ -93,7 +93,7 @@ function Signup() {
                 />
               </div>
               <div>
-                <label htmlFor="email">Username</label><br></br>
+                <label htmlFor="username">Username</label><br></br>
                 <input
                   type="text"
                   name="username"
