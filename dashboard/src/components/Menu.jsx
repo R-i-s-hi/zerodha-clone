@@ -23,7 +23,7 @@ const Menu = () => {
       try {
     // 1. Call backend logout endpoint to clear the HTTP-only cookie
     await axios.post(
-      "https://zerodha-clone-n5oh.onrender.com/api/logout", 
+      "https://zerodha-backend-3dmr.onrender.com/api/logout", 
       {},
       { 
         withCredentials: true // Necessary for cookies to be sent

@@ -21,11 +21,11 @@ const SellActionWindow = ({uid}) => {
   const handleSellClick = () => {
     console.log("clicked");
 
-  axios.get(`https://zerodha-clone-n5oh.onrender.com/getStock/${uid}`)
+  axios.get(`https://zerodha-backend-3dmr.onrender.com/getStock/${uid}`)
     .then((res) => {
       const data = res.data;
 
-      axios.post("https://zerodha-clone-n5oh.onrender.com/sellOrder", {
+      axios.post("https://zerodha-backend-3dmr.onrender.com/sellOrder", {
         ...data,
         mode: "SELL",
       }).then(() => {

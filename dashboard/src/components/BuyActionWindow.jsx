@@ -22,7 +22,7 @@ const BuyActionWindow = ({ uid }) => {
     }, []);
 
   const handleBuyClick = () => {
-    axios.post("https://zerodha-clone-n5oh.onrender.com/newOrder", {
+    axios.post("https://zerodha-backend-3dmr.onrender.com/newOrder", {
       name: uid,
       qty: parseInt(stockQuantity),
       price: parseFloat(stockPrice),
